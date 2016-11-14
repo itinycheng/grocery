@@ -11,6 +11,7 @@
     <modules>
         <module>java</module>
         <module>scala</module>
+        <module>spark</module>
     </modules>
 
 </project>

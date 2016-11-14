@@ -7,7 +7,8 @@ import Assert._
 class AppTest {
 
     @Test
-    def testK() = assertTrue(true)
+    def testK() = println(2)
+
 
 //    @Test
 //    def testKO() = assertTrue(false)
