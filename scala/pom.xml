@@ -65,7 +65,7 @@
                 <configuration>
                     <scalaVersion>${scala.version}</scalaVersion>
                     <args>
-                        <arg>-target:jvm-1.8</arg>
+                        <arg>-target:jvm-1.7</arg>
                     </args>
                 </configuration>
             </plugin>
