@@ -7,7 +7,7 @@ import scala.math._
 /**
   * Created by 16072453 on 2016/9/25.
   */
-object SparkPITest {
+object SparkPI {
   def main(args: Array[String]) {
     val args = Array("2")
     val spark = SparkSession

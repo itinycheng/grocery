@@ -8,7 +8,7 @@ import org.apache.spark.streaming.{Seconds, State, StateSpec, StreamingContext}
 /**
   * Created by 16072453 on 2016/9/25.
   */
-object MapWithStateTest {
+object MapWithState {
 
   def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf().setAppName("MapWithStateTest").setMaster("local")

@@ -5,7 +5,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 /**
   * Created by 16072453 on 2016/9/25.
   */
-object WordCountTest {
+object WordCount {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
     conf.setAppName("wordCount")
