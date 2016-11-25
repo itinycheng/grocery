@@ -12,6 +12,7 @@
         <module>java</module>
         <module>scala</module>
         <module>spark</module>
+        <module>flume</module>
     </modules>
 
 </project>

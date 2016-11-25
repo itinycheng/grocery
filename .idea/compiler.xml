@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="flume" />
         <module name="java" />
         <module name="java-test" />
         <module name="scala" />
@@ -30,6 +31,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="flume" target="1.5" />
       <module name="grocery" target="1.5" />
       <module name="java" target="1.7" />
       <module name="scala" target="1.5" />
