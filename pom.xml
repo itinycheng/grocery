@@ -13,6 +13,7 @@
         <module>scala</module>
         <module>spark</module>
         <module>flume</module>
+        <module>storm</module>
     </modules>
 
 </project>
