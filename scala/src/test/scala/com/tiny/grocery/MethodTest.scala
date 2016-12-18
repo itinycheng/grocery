@@ -19,7 +19,7 @@ object MethodTest {
     test(b = false, a = "tes")
     test("tes", false)
     test("tes")
-    //test(false)
+    test(b = false)
     test()
     def a = test2("d")
     println(a)

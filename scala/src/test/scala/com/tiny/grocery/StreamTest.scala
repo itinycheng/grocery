@@ -13,12 +13,14 @@ class StreamTest {
   def testContinually() = {
 
     val queue = new LinkedBlockingQueue[String](10000);
-    for (i <- 1 to 1000) {
+    for (i <- 1 to 10000) {
       queue.put(i + "fs" + i)
     }
     Stream.continually(queue.poll()).takeWhile(item => item != null && !item.isEmpty).foreach {
       curItem =>
         println(curItem)
+        if(curItem.contains("10000000"))
+          println("end")
     }
   }
 
