@@ -1,4 +1,4 @@
-package com.tiny.grocery
+package com.tiny.grocery.spark
 
 /**
   * Hello world!

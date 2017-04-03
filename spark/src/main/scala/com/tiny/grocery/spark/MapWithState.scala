@@ -1,4 +1,4 @@
-package com.tiny.grocery
+package com.tiny.grocery.spark
 
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD
