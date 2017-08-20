@@ -27,7 +27,6 @@ public class ThreadPoolTest {
                 }
             });
         }
-
         // print result
         for (int i = 0; i< 100; i++){
             Future<AtomicInteger> future = completionService.take();
