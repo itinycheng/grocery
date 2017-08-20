@@ -10,10 +10,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ThreadPoolTest {
 
-    public static AtomicInteger counter = new AtomicInteger(0);
-
     @Test
     public void test1() throws InterruptedException, ExecutionException {
+        final AtomicInteger counter = new AtomicInteger(0);
         ExecutorService service = Executors.newCachedThreadPool();
         ExecutorCompletionService<AtomicInteger> completionService = new ExecutorCompletionService<>(service);
         for (int i = 0; i< 100; i++){
@@ -34,8 +33,5 @@ public class ThreadPoolTest {
             Future<AtomicInteger> future = completionService.take();
             System.out.println(future.get().intValue());
         }
-
-
-
     }
 }
