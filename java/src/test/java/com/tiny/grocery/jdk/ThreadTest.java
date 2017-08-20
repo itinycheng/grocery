@@ -109,4 +109,15 @@ public class ThreadTest {
         Thread.sleep(1000);
         thread.interrupt();
     }
+
+    @Test
+    public void test6(){
+        System.out.println(Thread.currentThread());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(Thread.currentThread());
+            }
+        }).start();
+    }
 }
