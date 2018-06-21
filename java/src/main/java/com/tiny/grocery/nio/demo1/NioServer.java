@@ -12,17 +12,17 @@ import java.util.Set;
 /**
  * Created by 16072453 on 2016/10/24.
  */
-public class NIOServer {
+public class NioServer {
 
     private Selector selector;
 
-    private NIOProcessor[] processors;
+    private NioProcessor[] processors;
 
-    public static void main(String args[]) throws IOException {
-        new NIOServer().init().listen();
+    public static void main(String[] args) throws Exception {
+        new NioServer().init().listen();
     }
 
-    private NIOServer init() throws IOException {
+    private NioServer init() throws IOException {
         selector = Selector.open();
         ServerSocketChannel server = ServerSocketChannel.open();
         server.bind(new InetSocketAddress(7777));
@@ -30,14 +30,14 @@ public class NIOServer {
         server.register(selector, SelectionKey.OP_ACCEPT);
         // init NIOProcessors
         int availableProcessors = Runtime.getRuntime().availableProcessors();
-        processors = new NIOProcessor[availableProcessors];
+        processors = new NioProcessor[availableProcessors];
         for (int i = 0; i < availableProcessors; i++) {
-            processors[i] = new NIOProcessor();
+            processors[i] = new NioProcessor(i);
         }
         return this;
     }
 
-    private void listen() throws IOException {
+    private void listen() throws Exception {
         int index = 0;
         while (true) {
             if (selector.select() <= 0) continue;
@@ -50,10 +50,11 @@ public class NIOServer {
                     ServerSocketChannel channel = (ServerSocketChannel) key.channel();
                     SocketChannel accept = channel.accept();
                     if (accept == null) continue;
-                    System.out.println("remote address : " + accept.getRemoteAddress());
                     accept.configureBlocking(false);
-                    NIOProcessor processor = processors[index++ / processors.length];
-                    processor.addChannel(accept,SelectionKey.OP_READ);
+                    NioProcessor processor = processors[index++ % processors.length];
+                    processor.addChannel(accept, SelectionKey.OP_READ);
+                } else {
+                    System.out.println("operation:" + key.interestOps() + " isn't supported ");
                 }
             }
         }

@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author tiny.wang
  */
-public class NioClient {
+public class NioClient0 {
 
     private static final AtomicInteger CLIENT_ID_ADDER = new AtomicInteger(0);
     private static final Charset UTF8 = Charset.forName("utf-8");
@@ -24,7 +24,7 @@ public class NioClient {
     private String clientId;
     private Selector selector;
 
-    private NioClient(int port) throws IOException {
+    private NioClient0(int port) throws IOException {
         clientId = "client-" + CLIENT_ID_ADDER.incrementAndGet();
         selector = Selector.open();
         SocketChannel open = SocketChannel.open();
@@ -37,7 +37,7 @@ public class NioClient {
         if (Objects.isNull(args) || args.length <= 0) {
             throw new IllegalArgumentException("port is null.");
         }
-        NioClient nioClient = new NioClient(Integer.parseInt(args[0]));
+        NioClient0 nioClient = new NioClient0(Integer.parseInt(args[0]));
         nioClient.run();
     }
 
@@ -49,6 +49,7 @@ public class NioClient {
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()) {
                 SelectionKey next = iterator.next();
+                iterator.remove();
                 SocketChannel channel = (SocketChannel) next.channel();
                 if (Objects.isNull(next)) {
                     continue;

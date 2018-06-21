@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author tiny.wang
  */
-public class NioServer {
+public class NioServer0 {
 
     private static final AtomicInteger SERVER_ID_ADDER = new AtomicInteger(0);
     private static final Charset UTF8 = Charset.forName("utf-8");
@@ -28,7 +28,7 @@ public class NioServer {
 
     private String serverId;
 
-    private NioServer(int port) throws IOException {
+    private NioServer0(int port) throws IOException {
         serverId = "server-" + SERVER_ID_ADDER.incrementAndGet();
         selector = Selector.open();
         ServerSocketChannel serverChannel = ServerSocketChannel.open();
@@ -41,7 +41,7 @@ public class NioServer {
         if (Objects.isNull(args) || args.length <= 0) {
             throw new IllegalArgumentException("port is null!");
         }
-        NioServer nioServer = new NioServer(Integer.parseInt(args[0]));
+        NioServer0 nioServer = new NioServer0(Integer.parseInt(args[0]));
         nioServer.run();
     }
 
@@ -50,10 +50,10 @@ public class NioServer {
             if (selector.select() <= 0) {
                 continue;
             }
-            Iterator<SelectionKey> selectionKeys = selector.selectedKeys().iterator();
-            while (selectionKeys.hasNext()) {
-                SelectionKey selectionKey = selectionKeys.next();
-                selectionKeys.remove();
+            Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+            while (iterator.hasNext()) {
+                SelectionKey selectionKey = iterator.next();
+                iterator.remove();
                 if (selectionKey.isAcceptable()) {
                     ServerSocketChannel channel = (ServerSocketChannel) selectionKey.channel();
                     SocketChannel accept = channel.accept();
