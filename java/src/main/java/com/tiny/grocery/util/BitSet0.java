@@ -1,4 +1,4 @@
-package bitmap;
+package com.tiny.grocery.util;
 
 import java.util.BitSet;
 
